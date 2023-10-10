@@ -25,7 +25,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   Widget build(BuildContext context) {
 
     return SafeArea(child: Scaffold(
-
+appBar: AppBar(
+  title: Text('Home'),
+),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -35,16 +37,18 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 color: ColorAssets.secondaryColor,
               ),
 
-                child: Text('Welcome ,sir',
-                style: TextStyle(
-                  color: ColorAssets.kColor
-                ),),
+                child: Center(
+                  child: Text('Welcome ,sir',
+                  style: TextStyle(
+                    color: ColorAssets.kColor
+                  ),),
+                ),
 
             ),
             ListTile(
               leading: Icon(Icons.home,
               color: ColorAssets.kColor,),
-              title: Text('Home',
+              title: const Text('Home',
               style: Styles.textStyle14,),
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeView()));

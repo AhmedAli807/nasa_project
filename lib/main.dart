@@ -18,6 +18,8 @@ import 'package:nasa_project/views/Splash/splash_view.dart';
 import 'package:nasa_project/views/factory_map/factory_map_view.dart';
 import 'package:nasa_project/views/home/home_view.dart';
 import 'package:nasa_project/views/map_fire/map_view.dart';
+import 'package:nasa_project/views/onboarding/on_boarding_view.dart';
+import 'package:nasa_project/views/onboarding/widgets/on_boarding_view_body.dart';
 import 'package:nasa_project/views/pick_fire/pick_image_view.dart';
 import 'package:nasa_project/views/signup/signup_view.dart';
 import 'package:provider/provider.dart';
@@ -53,7 +55,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: ColorAssets.backgroundColor,
-        textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme)
+        textTheme: GoogleFonts.poppinsTextTheme(ThemeData.light().textTheme)
       ),
       home: const HomeView(),
     );
