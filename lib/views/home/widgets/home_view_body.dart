@@ -1,14 +1,10 @@
 import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/material.dart';
+import 'package:nasa_project/config/screen_size.dart';
 import 'package:nasa_project/utils/color_assets.dart';
 import 'package:nasa_project/utils/font_style.dart';
-import 'package:nasa_project/views/Login/login_view.dart';
-import 'package:nasa_project/views/factory_map/factory_map_view.dart';
-import 'package:nasa_project/views/home/home_view.dart';
-import 'package:nasa_project/views/map_fire/widgets/map_view_body.dart';
-import 'package:provider/provider.dart';
-
-import '../../../controller/authentication/login/sign_out_provider.dart';
+import 'home_drawer.dart';
+import 'list_view_awareness.dart';
 
 class HomeViewBody extends StatefulWidget {
   const HomeViewBody({Key? key}) : super(key: key);
@@ -20,94 +16,63 @@ class HomeViewBody extends StatefulWidget {
 class _HomeViewBodyState extends State<HomeViewBody> {
   PageController pageController = PageController();
   SideMenuController sideMenu = SideMenuController();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(child: Scaffold(
-appBar: AppBar(
-  title: Text('Home'),
-),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: ColorAssets.secondaryColor,
-              ),
-
-                child: Center(
-                  child: Text('Welcome ,sir',
-                  style: TextStyle(
-                    color: ColorAssets.kColor
-                  ),),
-                ),
-
-            ),
-            ListTile(
-              leading: Icon(Icons.home,
-              color: ColorAssets.kColor,),
-              title: const Text('Home',
-              style: Styles.textStyle14,),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeView()));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.factory,
-              color: ColorAssets.kColor,),
-              title: const Text('Recycle map',
-              style: Styles.textStyle14,),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>const FactoryMapView()));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.local_fire_department,
-              color: ColorAssets.kColor,),
-              title: const Text('Fire map',
-              style: Styles.textStyle14,),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>const MapViewBody()));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.volunteer_activism,
-              color: ColorAssets.kColor,),
-              title: const Text('Volunteer',
-              style: Styles.textStyle14,),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>const LoginView()));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings,
-              color: ColorAssets.kColor,),
-              title: const Text('Settings',
-              style: Styles.textStyle14,),
-              onTap: (){
-                // Navigator.push(context, MaterialPageRoute(builder: (context)=>const MapViewBody()));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.logout,
-              color: ColorAssets.kColor,),
-              title: const Text('Logout',
-              style: Styles.textStyle14,),
-              onTap: (){
-                Provider.of<SignOutProvider>(context,listen:false).signOutProvider();
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginView()));
-              },
-            ),
+      key: _scaffoldKey,
+      appBar: AppBar(
+          elevation: 0,
+          title: Text('Hello',
+            style: Styles.textStyle18.copyWith(
+                color: ColorAssets.secondaryColor),),
+          backgroundColor: ColorAssets.backgroundColor,
+          actions: [
+            IconButton(onPressed: () {},
+                icon: Icon(
+                  Icons.notifications, color: ColorAssets.secondaryColor,))
           ],
-        ),
+          leading: IconButton(onPressed: () {
+            _scaffoldKey.currentState!.openDrawer();
+          }, icon: Icon(Icons.menu, color: ColorAssets.secondaryColor,))
       ),
-      body: Column(
-        children: [
+      drawer: const HomeDrawer(),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text("Let's protect you from fires",
+                  style: Styles.textStyle14.copyWith(
+                      color: ColorAssets.kColor),),
+              ),
+              SizedBox(
+                height: ScreenSize.height(context) * 0.02,
+              ),
+              Text("Articles on the impact of fires around the world.",
+                style: Styles.textStyle18.copyWith(color: ColorAssets.kColor),),
+              SizedBox(
+                height: ScreenSize.height(context) * 0.02,
+              ),
+              Column(
+                children: [
+                  SizedBox(
+                    height: ScreenSize.height(context) * 0.68,
+                    child:const  ListViewAwareness(),
+                  ),
+                ],
+              )
 
-        ],
+            ],
+          ),
+        ),
       ),
     ));
   }
 }
+
+
