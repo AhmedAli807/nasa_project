@@ -47,10 +47,6 @@ class _PickImageViewBodyState extends State<PickImageViewBody> {
       appBar: AppBar(
         backgroundColor: ColorAssets.backgroundColor,
         elevation: 0.0,
-        leading: Icon(
-          Icons.keyboard_backspace_outlined,
-          color: ColorAssets.kColor,
-        ),
         actions: [
           IconButton(
               onPressed: ()async{
@@ -72,9 +68,6 @@ setState(() {
           builder: (context, provider, child) {
             return Column(
               children: [
-                ListView(
-                  shrinkWrap: true,
-                  children: [
                 pickedImageProvider.imageLoaded==true?
                          Center(
                             child: Column(
@@ -201,9 +194,7 @@ setState(() {
                     ),
                     SizedBox(
                       height: ScreenSize.height(context)*0.02,
-                    )
-                  ],
-                ),
+                    ),
               ],
             );
           },

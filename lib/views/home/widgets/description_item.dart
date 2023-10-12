@@ -23,39 +23,42 @@ final String desc;
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child:  Column(
-          children: [
-            Container(
-              height: ScreenSize.height(context)*0.8 ,
-              width: ScreenSize.width(context) ,
-              decoration: BoxDecoration(
-                  color: ColorAssets.secondaryColor,
-                  borderRadius: BorderRadius.circular(10)
-              ),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.asset(nameImage,
-                        height: ScreenSize.height(context) * 0.5,
-                        width: ScreenSize.width(context) ,),
-                    ),
-                      SizedBox(
-                        height: ScreenSize.height(context)*0.02,
+        child:  Container(
+          height: ScreenSize.height(context) ,
+          width: ScreenSize.width(context) ,
+          decoration: BoxDecoration(
+              color: ColorAssets.secondaryColor,
+              borderRadius: BorderRadius.circular(10)
+          ),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(nameImage,
+                          height: ScreenSize.height(context) * 0.5,
+                          width: ScreenSize.width(context) ,),
                       ),
+                        SizedBox(
+                          height: ScreenSize.height(context)*0.02,
+                        ),
 
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(desc,
-                      style: Styles.textStyle14.copyWith(color: ColorAssets.backgroundColor),),
-                    )
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(desc,
+                        style: Styles.textStyle14.copyWith(color: ColorAssets.backgroundColor),),
+                      )
+                    ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ) ,
     ));

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nasa_project/config/screen_size.dart';
 import 'package:nasa_project/utils/color_assets.dart';
+import 'package:nasa_project/views/All_Screens/all_Screens_view.dart';
 import 'package:nasa_project/views/home/home_view.dart';
 import 'package:nasa_project/views/onboarding/widgets/Fourth_on_boarding/fourth_on_boarding_view.dart';
 import 'package:nasa_project/views/onboarding/widgets/Second_on_boarding/second_on_boarding_view.dart';
@@ -62,7 +63,7 @@ class OnBoardingViewBody extends StatelessWidget {
                 ),
                 child: MaterialButton(onPressed: () {
                   Navigator.pushAndRemoveUntil(context,
-                      MaterialPageRoute(builder: (context) => const HomeView()), (
+                      MaterialPageRoute(builder: (context) => const AllScreensView()), (
                           route) => false);
                 },
                   child: Center(

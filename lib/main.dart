@@ -13,6 +13,7 @@ import 'package:nasa_project/controller/maps/get_maps_detect_provider.dart';
 import 'package:nasa_project/controller/maps/permission_provider.dart';
 import 'package:nasa_project/network_services/firebase_options.dart';
 import 'package:nasa_project/utils/color_assets.dart';
+import 'package:nasa_project/views/All_Screens/all_Screens_view.dart';
 import 'package:nasa_project/views/Login/login_view.dart';
 import 'package:nasa_project/views/Splash/splash_view.dart';
 import 'package:nasa_project/views/factory_map/factory_map_view.dart';
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: ColorAssets.backgroundColor,
         textTheme: GoogleFonts.poppinsTextTheme(ThemeData.light().textTheme)
       ),
-      home: const HomeView(),
+      home: const AllScreensView(),
     );
   }
 }
